@@ -1,8 +1,11 @@
-import * as React from 'react';
-import {AppBar,Box,Toolbar,Button,InputBase,styled,alpha,Grid,Typography,} from '@mui/material';
+import React, { useState } from 'react';
+import {
+  AppBar, Box, Toolbar, Button, InputBase, styled, alpha, Grid, Typography,
+  Drawer as MuiDrawer, IconButton
+} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
-import IconButton from '@mui/material/IconButton';
+import SideDrawer from './SideDrawer'; // Import the SideDrawer component
 import logo from '../../assets/logo.png';
 import mobiles from '../../assets/mobiles.svg';
 import earbuds from '../../assets/wireless-earbuds.svg';
@@ -62,20 +65,32 @@ const categories = [
 ];
 
 export default function CustomAppBar() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (open) => {
+    setDrawerOpen(open);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       {/* AppBar Section */}
       <AppBar position="static" sx={{ bgcolor: '#4da6ff' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          {/* Left side logo */}
+          {/* Left side menu and logo */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <IconButton size="large" edge="start" color="inherit" aria-label="menu">
+            <IconButton 
+              size="large" 
+              edge="start" 
+              color="inherit" 
+              aria-label="menu"
+              onClick={() => toggleDrawer(true)}
+            >
               <MenuIcon />
             </IconButton>
             <img src={logo} alt="Logo" style={{ width: '100px', maxWidth: '120px' }} />
           </Box>
 
-      
+          {/* Search bar */}
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -88,40 +103,39 @@ export default function CustomAppBar() {
 
           {/* Right side buttons */}
           <Box>
-  <Button
-    variant="outlined"
-    sx={{
-      color: '#4da6ff', 
-      backgroundColor: 'white', 
-      borderColor: 'white',
-      ml: 1,
-      '&:hover': {
-        backgroundColor: 'transparent', 
-        color: 'white', 
-        borderColor: 'white',
-      },
-    }}
-  >
-    Log in
-  </Button>
-  <Button
-    variant="outlined"
-    sx={{
-      color: 'white', 
-      backgroundColor: 'transparent', 
-      borderColor: 'white',
-      ml: 1,
-      '&:hover': {
-        backgroundColor: 'white', 
-        color: '#4da6ff', 
-        borderColor: 'white',
-      },
-    }}
-  >
-    Register
-  </Button>
-</Box>
-
+            <Button
+              variant="outlined"
+              sx={{
+                color: '#4da6ff', 
+                backgroundColor: 'white', 
+                borderColor: 'white',
+                ml: 1,
+                '&:hover': {
+                  backgroundColor: 'transparent', 
+                  color: 'white', 
+                  borderColor: 'white',
+                },
+              }}
+            >
+              Log in
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{
+                color: 'white', 
+                backgroundColor: 'transparent', 
+                borderColor: 'white',
+                ml: 1,
+                '&:hover': {
+                  backgroundColor: 'white', 
+                  color: '#4da6ff', 
+                  borderColor: 'white',
+                },
+              }}
+            >
+              Register
+            </Button>
+          </Box>
         </Toolbar>
       </AppBar>
 
@@ -164,6 +178,9 @@ export default function CustomAppBar() {
           ))}
         </Grid>
       </Box>
+
+      {/* Side Drawer */}
+      <SideDrawer open={drawerOpen} onClose={() => toggleDrawer(false)} />
     </Box>
   );
 }
