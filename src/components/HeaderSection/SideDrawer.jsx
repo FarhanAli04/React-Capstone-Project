@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import { ExpandLess, ExpandMore, Close } from "@mui/icons-material";
 
-// Category data
 const categories = [
   {
     name: "Mobiles",
@@ -29,6 +28,11 @@ const categories = [
     name: "Power Banks",
     subcategories: ["Anker", "Xiaomi", "Baseus"],
   },
+  {
+    name: "Motorcycles", 
+    subcategories: ["Union Star", " Unique", " Yamaha" , "Honda"],
+  },
+
 ];
 
 const SideDrawer = ({ open, onClose }) => {
@@ -44,10 +48,9 @@ const SideDrawer = ({ open, onClose }) => {
       open={open}
       onClose={onClose}
       PaperProps={{
-        sx: { width: 350 }, // Increased width here
+        sx: { width: 350 }, 
       }}
     >
-      {/* Header Section */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px" }}>
         <Typography variant="h6" color="primary">
           PriceOye
@@ -56,15 +59,12 @@ const SideDrawer = ({ open, onClose }) => {
           <Close />
         </IconButton>
       </div>
-
-      {/* Login Button */}
       <div style={{ padding: "8px 16px" }}>
         <Button variant="outlined" fullWidth>
           Login
         </Button>
       </div>
 
-      {/* Links */}
       <List>
         <ListItem>
           <ListItemText primary="Track my Order" />
@@ -73,8 +73,6 @@ const SideDrawer = ({ open, onClose }) => {
           <ListItemText primary="Launch a Complaint" />
         </ListItem>
       </List>
-
-      {/* Categories */}
       <Typography
         variant="subtitle1"
         style={{ fontWeight: "bold", padding: "8px 16px", backgroundColor: "#f0f5ff" }}
