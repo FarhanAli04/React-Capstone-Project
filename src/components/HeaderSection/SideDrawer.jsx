@@ -32,6 +32,7 @@ const categories = [
     name: "Motorcycles", 
     subcategories: ["Union Star", " Unique", " Yamaha" , "Honda"],
   },
+  
 
 ];
 

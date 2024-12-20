@@ -5,8 +5,8 @@ import './App.css';
 import HeaderSection from './components/HeaderSection/HeaderSection';
 import { HeroSection } from './components/HeroSection/HeroSection';
 import Banner from './components/HeroSection/Banner';
-import Login from './pages/Login';
-import Register from './pages/Register';
+import Login from './Auth/Login';
+import Register from './Auth/Register';
 
 function App() {
   return (
