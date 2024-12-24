@@ -6,7 +6,7 @@ import Product from './product/Product'
 import { Box } from '@mui/material'
 import BestSellers from './best-sellers/BestSellers'
 
-import ProductSection from './productSectionT/ProductSection'
+import ProductSection from './productSection2/ProductSection'
 import LatestMobiles from './LatestMobiles/LatestMobiles'
 
 import ShopByBrand from './CustomerReviews/CustomerReview'
