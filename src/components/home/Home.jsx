@@ -10,6 +10,9 @@ import ProductSection from './productSection2/ProductSection'
 import LatestMobiles from './LatestMobiles/LatestMobiles'
 
 import ShopByBrand from './CustomerReviews/CustomerReview'
+import ReasonToBuy from './reasonToBuy/reasonToBuy'
+import FeaturesSection from './FeaturesSection/FeaturesSection'
+
 
 const Home = () => {
   return (
@@ -26,6 +29,11 @@ const Home = () => {
     <ProductSection/>
     <LatestMobiles/>
     <ShopByBrand/>
+    <ReasonToBuy/>
+<FeaturesSection/>
+
+
+
     </>
   )
 }
