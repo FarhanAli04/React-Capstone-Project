@@ -8,7 +8,8 @@ import BestSellers from './best-sellers/BestSellers'
 
 import ProductSection from './productSectionT/ProductSection'
 import LatestMobiles from './LatestMobiles/LatestMobiles'
-import ShopByPrice from './ShopbyPrice/ShopbyPrice'
+
+import ShopByBrand from './CustomerReviews/CustomerReview'
 
 const Home = () => {
   return (
@@ -24,7 +25,7 @@ const Home = () => {
    
     <ProductSection/>
     <LatestMobiles/>
-    <ShopByPrice/>
+    <ShopByBrand/>
     </>
   )
 }
