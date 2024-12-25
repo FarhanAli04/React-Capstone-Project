@@ -33,17 +33,14 @@ const Header = () => {
   const storedUser = JSON.parse(userData);
 
   useEffect(() => {
-
-
     if (storedUser) {
-
-      setIsLoggedIn(true)
-
+      setIsLoggedIn(true);
     }
     if (storedUser && storedUser.fullName) {
       setUserName(storedUser.fullName);
     }
   }, []);
+
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -170,8 +167,9 @@ const Header = () => {
               edge="start"
               color="inherit"
               aria-label="open drawer"
+              onClick={toggleDrawer(true)}
             >
-              <FontAwesomeIcon icon={faBars} onClick={toggleDrawer(true)} />
+              <FontAwesomeIcon icon={faBars} />
             </IconButton>
             <Link to={""}>
               <img
@@ -207,66 +205,69 @@ const Header = () => {
               sx={{ display: { xs: "none", md: "flex" } }}
               className="flex items-center"
             >
-              {!isLoggedIn ? (<Box className="flex gap-2">
-                <Button
-                  className="w-28 h-10"
-                  variant="contained"
-                  sx={{
-                    textTransform: "none",
-                    backgroundColor: "white",
-                    color: "#48afff",
-                    border: "1px solid #48afff",
-                    "&:hover": {
+              {!isLoggedIn ? (
+                <Box className="flex gap-2">
+                  <Button
+                    className="w-28 h-10"
+                    variant="contained"
+                    sx={{
+                      textTransform: "none",
+                      backgroundColor: "white",
+                      color: "#48afff",
+                      border: "1px solid #48afff",
+                      "&:hover": {
+                        backgroundColor: "transparent",
+                        color: "white",
+                        border: "1px solid white",
+                      },
+                      paddingX: 2,
+                      paddingY: 1,
+                    }}
+                  >
+                    <Link to={"sign-in"}>Log in</Link>
+                  </Button>
+                  <Button
+                    className="w-28 h-10"
+                    variant="outlined"
+                    sx={{
+                      textTransform: "none",
                       backgroundColor: "transparent",
                       color: "white",
                       border: "1px solid white",
-                    },
-                    paddingX: 2,
-                    paddingY: 1,
-                  }}
-                >
-                  <Link to={"sign-in"}>Log in</Link>
-                </Button>
-                <Button
-                  className="w-28 h-10"
-                  variant="outlined"
-                  sx={{
-                    textTransform: "none",
-                    backgroundColor: "transparent",
-                    color: "white",
-                    border: "1px solid white",
-                    "&:hover": { backgroundColor: "white", color: "#48afff" },
-                    paddingX: 2,
-                    paddingY: 1,
-                  }}
-                >
-                  <Link to={"sign-up"}>Register</Link>
-                </Button>
-              </Box>
-
-              ) : (isLoggedIn && (
-                <Box className='flex items-center gap-2'>
-                  <IconButton
-                    size="large"
-                    edge="end"
-                    aria-label="account of current user"
-                    aria-controls={menuId}
-                    aria-haspopup="true"
-                    onMouseOver={handleProfileMenuOpen}
-                    color="inherit"
+                      "&:hover": { backgroundColor: "white", color: "#48afff" },
+                      paddingX: 2,
+                      paddingY: 1,
+                    }}
                   >
-                    <FontAwesomeIcon icon={faCircleUser} />
-                  </IconButton>
-
-                  {userName && <Typography className="w-20">{userName}</Typography>}
-
-                </Box>))}
+                    <Link to={"sign-up"}>Register</Link>
+                  </Button>
+                </Box>
+              ) : (
+                isLoggedIn && (
+                  <Box className="flex items-center gap-2">
+                    <IconButton
+                      size="large"
+                      edge="end"
+                      aria-label="account of current user"
+                      aria-controls={menuId}
+                      aria-haspopup="true"
+                      onMouseOver={handleProfileMenuOpen}
+                      color="inherit"
+                    >
+                      <FontAwesomeIcon icon={faCircleUser} />
+                    </IconButton>
+                    {userName && (
+                      <Typography className="w-20">{userName}</Typography>
+                    )}
+                  </Box>
+                )
+              )}
             </Box>
           </Toolbar>
         </AppBar>
         {renderMobileMenu}
         {renderMenu}
-        <AppMenu open={open} toggleDrawer={toggleDrawer} onClose={() => toggleDrawer(false)} />
+        <AppMenu open={open} onClose={toggleDrawer(false)} />
       </Box>
     </>
   );

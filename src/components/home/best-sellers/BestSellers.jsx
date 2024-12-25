@@ -4,63 +4,7 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 
 const BestSellers = () => {
-  // const product = [
-  //   {
-  //     id: 1,
-  //     image:
-  //       "https://images.priceoye.pk/anker-soundcore-liberty-4-nc-earbuds-pakistan-priceoye-0cikw-500x500.webp",
-  //     title: "Redmi Buds 6 Active Wireless Earbuds",
-  //     currentPrice: 4549,
-  //     originalPrice: 7399,
-  //     discountPercentage: 39,
-  //     rating: 5.0,
-  //     reviews: 17,
-  //   },
-  //   {
-  //     id: 2,
-  //     image:
-  //       "https://images.priceoye.pk/realme-t100-wireless-earbuds-pakistan-priceoye-tq6ud-270x270.webp",
-  //     title: "Realme T100 Wireless Earbuds",
-  //     currentPrice: 4999,
-  //     originalPrice: 7000,
-  //     discountPercentage: 29,
-  //     rating: 54.9,
-  //     reviews: 38,
-  //   },
-  //   {
-  //     id: 3,
-  //     image:
-  //       "https://images.priceoye.pk/nothing-buds-2-pro-pakistan-priceoye-qouw0-270x270.webp",
-  //     title: "Nothing Buds Pro 2",
-  //     currentPrice: 13499,
-  //     originalPrice: 20000,
-  //     discountPercentage: 33,
-  //     rating: 4.5,
-  //     reviews: 5,
-  //   },
-  //   {
-  //     id: 4,
-  //     image:
-  //       "https://images.priceoye.pk/anker-r50i-earbuds-pakistan-priceoye-csv44-270x270.webp",
-  //     title: "Anker R50i Earbuds",
-  //     currentPrice: 4611,
-  //     originalPrice: 7199,
-  //     discountPercentage: 36,
-  //     rating: 4.7,
-  //     reviews: 30,
-  //   },
-  //   {
-  //     id: 5,
-  //     image:
-  //       "https://images.priceoye.pk/soundpeats-engine4-wireless-earbuds-pakistan-priceoye-40ifu-270x270.webp",
-  //     title: "Soundpeats Engine4 Wireless Earbuds",
-  //     currentPrice: 10518,
-  //     originalPrice: 14000,
-  //     discountPercentage: 25,
-  //     rating: 4.6,
-  //     reviews: 13,
-  //   },
-  // ]
+
 
   return (
     <Box className="container mx-auto px-3">

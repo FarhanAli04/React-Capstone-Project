@@ -12,25 +12,27 @@ import LatestMobiles from './LatestMobiles/LatestMobiles'
 import ShopByBrand from './CustomerReviews/CustomerReview'
 import ReasonToBuy from './reasonToBuy/reasonToBuy'
 import FeaturesSection from './FeaturesSection/FeaturesSection'
+import ShopByPrice from './ShopbyPrice/ShopbyPrice'
 
 
 const Home = () => {
   return (
     <>
-    <Box className="!bg-slate-100">
-    
-      <Category/>
-      <HeroSection/>
-      <EarbudGallery/>
-      <Product/>
-      <BestSellers/>
-    </Box>
-   
-    <ProductSection/>
-    <LatestMobiles/>
-    <ShopByBrand/>
-    <ReasonToBuy/>
-<FeaturesSection/>
+      <Box className="!bg-slate-100">
+
+        <Category />
+        <HeroSection />
+        <EarbudGallery />
+        <Product />
+        <BestSellers />
+      </Box>
+
+      <ProductSection />
+      <LatestMobiles />
+      <ShopByPrice/>
+      <ShopByBrand />
+      <ReasonToBuy />
+      <FeaturesSection />
 
 
 

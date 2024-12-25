@@ -108,35 +108,38 @@ const Sidebar = ({ open, onClose }) => {
 
   return (
     <Drawer
-      anchor="left"
-      open={open}
-      onClose={onClose}
-      PaperProps={{
-        sx: { width: 350, backgroundColor: "#f7f7f7", padding: "16px 0" },
-      }}
+    anchor="left"
+    open={open}
+    onClose={onClose}
+    PaperProps={{
+      sx: { width: 350, backgroundColor: "#f7f7f7", padding: "16px 0" },
+    }}
+    BackdropProps={{
+      onClick: onClose,
+    }}
     >
       {/* Header Section with Logo */}
       <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "16px",
-          backgroundColor: "#4dacf5",
-        }}
-      >
-        <img
-          src={logo}
-          alt="Logo"
-          style={{ height: "40px", marginLeft: "16px" }}
-        />
-        <IconButton
-          onClick={onClose}
-          style={{ color: "black", borderRadius: "50%" }}
-        >
-          <Close />
-        </IconButton>
-      </div>
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: "16px",
+      backgroundColor: "#4dacf5",
+    }}
+  >
+    <img
+      src={logo}
+      alt="Logo"
+      style={{ height: "40px", marginLeft: "16px" }}
+    />
+    <IconButton
+      onClick={onClose}
+      style={{ color: "black", borderRadius: "50%" }}
+    >
+      <Close />
+    </IconButton>
+  </div>
 
       {/* User Account Links with Unified Background */}
       <List
