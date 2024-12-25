@@ -1,23 +1,23 @@
 import { Box, Button, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import products from "./productsData"; // Import the product list
+import products from "./productsData";
 
 const ProductDetail = () => {
   const { productId } = useParams();
-  const [selectedColor, setSelectedColor] = useState("black");
   const navigate = useNavigate();
 
   // Find the product by ID
-  const product = products.find((item) => item.id === parseInt(productId));
+  const product = products.find((item) => item.id === parseInt(productId, 10));
 
   if (!product) {
     return <Typography>Product not found.</Typography>;
   }
 
   const handleAddToCart = () => {
+    // For now, just navigate to checkout. You can implement actual cart functionality later.
     navigate("/checkout");
   };
 
@@ -47,6 +47,9 @@ const ProductDetail = () => {
                 Rs {product.originalPrice}
               </Typography>
             </Box>
+            <Typography>
+              Discount: {product.discountPercentage}% off
+            </Typography>
             <Button
               variant="contained"
               onClick={handleAddToCart}

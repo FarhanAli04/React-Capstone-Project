@@ -1,4 +1,4 @@
-const products = [
+const productsData = [
     {
       id: 1,
       image: "https://images.priceoye.pk/g-tide-r1-smart-watch-pakistan-priceoye-xlubt-270x270.webp",
@@ -110,5 +110,5 @@ const products = [
       },
   ];
   
-  export default products;
+  export default productsData;
   

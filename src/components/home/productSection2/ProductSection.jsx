@@ -1,6 +1,7 @@
+// filepath: /E:/React Capstone/my-capstone/src/Components/home/productSection2/ProductSection.jsx
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,6 +13,12 @@ import "swiper/css/grid";
 import "swiper/css/navigation";
 
 const ProductSection = () => {
+  const navigate = useNavigate();
+
+  const handleProductClick = (id) => {
+    navigate(`/product/${id}`);
+  };
+
   return (
     <Box className="bg-gray-200">
       <Box
@@ -40,13 +47,20 @@ const ProductSection = () => {
             <SwiperSlide
               key={item.id}
               className="bg-white rounded-lg mx-3 !w-72 !px-5 cursor-pointer drop-shadow-md"
+              onClick={() => handleProductClick(item.id)}
             >
-              <Link to={`/product/${item.id}`} className="block">
-                <Box className="flex flex-col justify-center items-center !mt-5">
-                  <img className="w-28" src={item.image} alt={item.title} />
-                  <Typography>{item.title}</Typography>
+              <Box className="flex flex-col justify-center items-center !mt-5">
+                <img className="w-28" src={item.image} alt={item.title} />
+                <Typography>{item.title}</Typography>
+                <Box className="flex items-center gap-2 mt-2">
+                  <FontAwesomeIcon className="text-[#FFC61C]" icon={faStar} />
+                  <Typography>{item.rating}</Typography>
                 </Box>
-              </Link>
+                <Typography variant="h6" className="mt-2">Rs {item.currentPrice}</Typography>
+                <Typography className="text-gray-500 line-through">
+                  Rs {item.originalPrice}
+                </Typography>
+              </Box>
             </SwiperSlide>
           ))}
         </Swiper>

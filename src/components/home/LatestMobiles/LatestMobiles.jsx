@@ -2,15 +2,10 @@ import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Compain from '../static-banner-bnpl-mb-v4.jpg'
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
-// import "./swiper.css";
-
-// import required modules
 import { Grid } from "swiper/modules";
-// import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Navigation}  from 'swiper/modules';

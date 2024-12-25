@@ -5,14 +5,13 @@ import EarbudGallery from './earbud-gallery/EarbudGallery'
 import Product from './product/Product'
 import { Box } from '@mui/material'
 import BestSellers from './best-sellers/BestSellers'
-
 import ProductSection from './productSection2/ProductSection'
 import LatestMobiles from './LatestMobiles/LatestMobiles'
-
 import ShopByBrand from './CustomerReviews/CustomerReview'
 import ReasonToBuy from './reasonToBuy/reasonToBuy'
 import FeaturesSection from './FeaturesSection/FeaturesSection'
 import ShopByPrice from './ShopbyPrice/ShopbyPrice'
+import LatestTrimmers from './latestTrimmers/latestTrimmers'
 
 
 const Home = () => {
@@ -25,16 +24,16 @@ const Home = () => {
         <EarbudGallery />
         <Product />
         <BestSellers />
+        <ProductSection />
       </Box>
 
-      <ProductSection />
+
       <LatestMobiles />
-      <ShopByPrice/>
+      <ShopByPrice />
       <ShopByBrand />
       <ReasonToBuy />
+      <LatestTrimmers />
       <FeaturesSection />
-
-
 
     </>
   )

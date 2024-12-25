@@ -1,14 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
 import "./swiper.css";
-
-// import required modules
 import { Grid } from "swiper/modules";
 import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

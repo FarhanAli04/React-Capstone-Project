@@ -12,7 +12,6 @@ import Img7 from "../../../assets/hero-7.jpg"
 import Img8 from "../../../assets/hero-8.jpg"
 import Banner from "../../../assets/sale-campaign-banner.gif"
 
-
 import { Navigation}  from 'swiper/modules';
 import { Box } from '@mui/material';
 
