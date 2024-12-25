@@ -12,6 +12,7 @@ import ReasonToBuy from './reasonToBuy/reasonToBuy'
 import FeaturesSection from './FeaturesSection/FeaturesSection'
 import ShopByPrice from './ShopbyPrice/ShopbyPrice'
 import LatestTrimmers from './latestTrimmers/latestTrimmers'
+import Footer from '../footer/Footer'
 
 
 const Home = () => {
@@ -34,7 +35,7 @@ const Home = () => {
       <ReasonToBuy />
       <LatestTrimmers />
       <FeaturesSection />
-
+<Footer/>
     </>
   )
 }
