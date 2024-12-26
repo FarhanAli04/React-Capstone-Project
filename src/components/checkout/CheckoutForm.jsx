@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import ErrorBoundary from '../ErrorBoundary';
+
 
 const steps = ["OTP Verification", "Contact Info", "Delivery", "Payment"];
 

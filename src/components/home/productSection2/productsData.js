@@ -2,7 +2,7 @@ const productsData = [
     {
       id: 1,
       image: "https://images.priceoye.pk/g-tide-r1-smart-watch-pakistan-priceoye-xlubt-270x270.webp",
-      title: "Redmi Buds 6 Active Wireless Earbuds",
+      title: "Ultra Smart Watch With 7 Straps",
       currentPrice: 4549,
       originalPrice: 7399,
       discountPercentage: 39,
@@ -12,7 +12,7 @@ const productsData = [
     {
       id: 2,
       image: "https://images.priceoye.pk/mibro-watch-lite3-pro-pakistan-priceoye-v5v3v-270x270.webp",
-      title: "Realme T100 Wireless Earbuds",
+      title: "YOLO Ultron Smart Watch",
       currentPrice: 4999,
       originalPrice: 7000,
       discountPercentage: 29,
@@ -23,7 +23,7 @@ const productsData = [
         id: 3,
         image:
           "https://images.priceoye.pk/ultra-smart-watch-7-in-1-pakistan-priceoye-3ybh3-270x270.webp",
-        title: "Nothing Buds Pro 2",
+        title: "Realme Smart Watch",
         currentPrice: 13499,
         originalPrice: 20000,
         discountPercentage: 33,
@@ -34,7 +34,7 @@ const productsData = [
         id: 4,
         image:
           "https://images.priceoye.pk/realme-watch-pakistan-priceoye-g61ky-270x270.webp",
-        title: "Anker R50i Earbuds",
+        title: "G-TiDE R1 Smart Watch",
         currentPrice: 4611,
         originalPrice: 7199,
         discountPercentage: 36,
@@ -56,7 +56,7 @@ const productsData = [
         id: 6,
         image:
           "https://images.priceoye.pk/mibro-watch-lite3-pro-pakistan-priceoye-v5v3v-270x270.webp",
-        title: "Samsung Galaxy Buds 3 Pro ",
+        title: "HK9 PRO Max Plus Smartwatch ",
         currentPrice: 49799,
         originalPrice: 69999,
         discountPercentage: 29,
@@ -68,7 +68,7 @@ const productsData = [
         id: 7,
         image:
           "https://images.priceoye.pk/qcy-t13-anc-2-pakistan-priceoye-uvlbc-270x270.webp",
-        title: "QCY T13 ANC 2",
+        title: "Mibro Watch Lite 3 With Dual Strap",
         currentPrice: 5499,
         originalPrice: 6000,
         discountPercentage: 8,
@@ -79,7 +79,7 @@ const productsData = [
         id: 8,
         image:
           "https://images.priceoye.pk/realme-watch-pakistan-priceoye-g61ky-270x270.webp",
-        title: "Realme Buds T110",
+        title: "Apple Watch SE 44mm",
         currentPrice: 4999,
         originalPrice: 10500,
         discountPercentage: 52,
@@ -90,7 +90,7 @@ const productsData = [
         id: 9,
         image:
           "https://images.priceoye.pk/audionic-airbud-550-pakistan-priceoye-o6fve-270x270.webp",
-        title: "Audionic Airbud 550",
+        title: "Xiaomi Redmi Watch 5 Active",
         currentPrice: 3811,
         originalPrice: 9990,
         discountPercentage: 62,
@@ -101,7 +101,7 @@ const productsData = [
         id: 10,
         image:
           "	https://images.priceoye.pk/samsung-galaxy-watch-6-classic-43mm-pakistan-priceoye-15dli-270x270.webp",
-        title: "Imiki MT2 Wireless Erbuds",
+        title: "Haylou Watch 2 Pro",
         currentPrice: 3899,
         originalPrice: 6999,
         discountPercentage: 44,

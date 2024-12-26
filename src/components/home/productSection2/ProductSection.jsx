@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import products from "./productsData"; // Import the product list
+import products from "./productsData"; 
 
 import "swiper/css";
 import "swiper/css/grid";

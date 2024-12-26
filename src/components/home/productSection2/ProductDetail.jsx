@@ -9,12 +9,13 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
 
-  // Find the product by ID
-  const product = products.find((item) => item.id === parseInt(productId, 10));
-
+  const { id } = useParams();
+  const product = products.find((item) => item.id.toString() === id);
+  
   if (!product) {
     return <Typography>Product not found.</Typography>;
   }
+  
 
   const handleAddToCart = () => {
     // For now, just navigate to checkout. You can implement actual cart functionality later.
