@@ -6,7 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import products from "./productsData"; 
+import products from "./productsData";
+import { useProductContext } from "../../context/ProductContext";
 
 import "swiper/css";
 import "swiper/css/grid";
@@ -14,9 +15,11 @@ import "swiper/css/navigation";
 
 const ProductSection = () => {
   const navigate = useNavigate();
+  const { setSelectedProduct } = useProductContext();
 
-  const handleProductClick = (id) => {
-    navigate(`/product/${id}`);
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+    navigate(`/product/${product.id}`);
   };
 
   return (
@@ -47,7 +50,7 @@ const ProductSection = () => {
             <SwiperSlide
               key={item.id}
               className="bg-white rounded-lg mx-3 !w-72 !px-5 cursor-pointer drop-shadow-md"
-              onClick={() => handleProductClick(item.id)}
+              onClick={() => handleProductClick(item)}
             >
               <Box className="flex flex-col justify-center items-center !mt-5">
                 <img className="w-28" src={item.image} alt={item.title} />

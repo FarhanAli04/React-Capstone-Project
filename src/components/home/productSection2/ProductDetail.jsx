@@ -4,60 +4,120 @@ import { useParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import products from "./productsData";
+import { useProductContext } from "../../context/ProductContext";
 
 const ProductDetail = () => {
-  const { productId } = useParams();
-  const navigate = useNavigate();
-
   const { id } = useParams();
-  const product = products.find((item) => item.id.toString() === id);
-  
-  if (!product) {
+  const navigate = useNavigate();
+  const { selectedProduct, setSelectedProduct } = useProductContext();
+
+  React.useEffect(() => {
+    const product = products.find((item) => item.id.toString() === id);
+    setSelectedProduct(product);
+  }, [id, setSelectedProduct]);
+
+  if (!selectedProduct) {
     return <Typography>Product not found.</Typography>;
   }
-  
 
   const handleAddToCart = () => {
-    // For now, just navigate to checkout. You can implement actual cart functionality later.
     navigate("/checkout");
   };
 
   return (
     <Box className="min-h-screen bg-gray-50">
       <Box className="container mx-auto px-4 py-8">
-        <Box className="grid md:grid-cols-2 gap-8 bg-white p-6 rounded-xl shadow-sm">
+        <Box className="grid md:grid-cols-2 gap-8 bg-white p-6 rounded-xl shadow-md">
           <Box className="space-y-4">
-            <Box className="relative aspect-square rounded-xl overflow-hidden">
+            <Box className="relative rounded-xl overflow-hidden">
               <img
-                src={product.image}
-                alt={product.title}
-                className="w-full h-full object-contain"
+                src={selectedProduct.image}
+                alt={selectedProduct.title}
+                className="w-full h-auto object-contain border border-gray-300 rounded-xl"
+                style={{ maxWidth: "300px" }} // Adjust the maxWidth to decrease the image size
               />
             </Box>
+            {selectedProduct.thumbnails && (
+              <Box className="grid grid-cols-4 gap-2">
+                {selectedProduct.thumbnails.map((thumbnail, index) => (
+                  <Box
+                    key={index}
+                    className="relative rounded-md overflow-hidden border border-gray-200 hover:border-blue-400 cursor-pointer"
+                  >
+                    <img
+                      src={thumbnail}
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-full h-auto object-cover"
+                    />
+                  </Box>
+                ))}
+              </Box>
+            )}
           </Box>
           <Box className="space-y-6">
-            <Typography variant="h4">{product.title}</Typography>
+            <Typography variant="h4" className="font-bold text-gray-800">
+              {selectedProduct.title}
+            </Typography>
             <Box className="flex items-center gap-2">
-              <FontAwesomeIcon className="text-[#FFC61C]" icon={faStar} />
-              <Typography>{product.rating}</Typography>
-              <Typography className="text-sm ml-2">{product.reviews} Reviews</Typography>
-            </Box>
-            <Box>
-              <Typography variant="h5">Rs {product.currentPrice}</Typography>
-              <Typography className="text-gray-500 line-through">
-                Rs {product.originalPrice}
+              <FontAwesomeIcon className="text-yellow-500" icon={faStar} />
+              <Typography>{selectedProduct.rating}</Typography>
+              <Typography className="text-sm text-gray-500 ml-2">
+                {selectedProduct.reviews} Reviews
               </Typography>
             </Box>
-            <Typography>
-              Discount: {product.discountPercentage}% off
+            <Box className="flex items-center gap-4">
+              <Typography variant="h5" className="text-green-600 font-semibold">
+                Rs {selectedProduct.currentPrice}
+              </Typography>
+              <Typography className="text-gray-500 line-through">
+                Rs {selectedProduct.originalPrice}
+              </Typography>
+              <Typography className="text-sm text-red-600">
+                {selectedProduct.discountPercentage}% off
+              </Typography>
+            </Box>
+            <Typography className="text-sm text-gray-700">
+              Availability: {selectedProduct.availability}
             </Typography>
             <Button
               variant="contained"
               onClick={handleAddToCart}
-              className="!bg-orange-500 !hover:bg-orange-600"
+              className="!bg-orange-500 !hover:bg-orange-600 text-white font-bold"
             >
               Add to Cart
             </Button>
+            <Box className="flex gap-6 mt-4">
+              <Box className="text-center">
+                <img
+                  src="/path-to-warranty-icon.png"
+                  alt="Warranty"
+                  className="w-10 h-10 mx-auto"
+                />
+                <Typography className="text-sm text-gray-600">
+                  3 Days Warranty
+                </Typography>
+              </Box>
+              <Box className="text-center">
+                <img
+                  src="/path-to-return-icon.png"
+                  alt="Returns"
+                  className="w-10 h-10 mx-auto"
+                />
+                <Typography className="text-sm text-gray-600">
+                  Easy Returns
+                </Typography>
+              </Box>
+              <Box className="text-center">
+                <img
+                  src="/path-to-delivery-icon.png"
+                  alt="Delivery"
+                  className="w-10 h-10 mx-auto"
+                />
+                <Typography className="text-sm text-gray-600">
+                  Fast Delivery
+                </Typography>
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Box>

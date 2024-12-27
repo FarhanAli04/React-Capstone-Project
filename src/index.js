@@ -1,3 +1,4 @@
+// filepath: /E:/React Capstone/my-capstone/src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -14,6 +15,7 @@ import ProductDetail from './Components/home/productSection2/ProductDetail.jsx';
 import CheckoutForm from './Components/checkout/CheckoutForm';
 import OrderComplete from './Components/order/OrderComplete';
 import { ProductProvider } from './Components/context/ProductContext.js';
+import { CheckoutProvider } from './Components/context/CheckoutContext.js';
 import ErrorBoundary from './Components/ErrorBoundary.jsx';
 
 const router = createBrowserRouter([
@@ -82,9 +84,10 @@ root.render(
   <React.StrictMode>
     <ErrorBoundary>
       <ProductProvider>
-        <RouterProvider router={router} />
+        <CheckoutProvider>
+          <RouterProvider router={router} />
+        </CheckoutProvider>
       </ProductProvider>
     </ErrorBoundary>
   </React.StrictMode>
 );
-
