@@ -1,12 +1,10 @@
-// filepath: /E:/React Capstone/my-capstone/src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './Components/layout/layout.jsx';
-import SignUp from './Components/auth/sign-in/SignIn.jsx';
-import SignIn from './Components/auth/sign-up/SignUp.jsx';
+import SignUp from './Components/auth/sign-up/SignUp.jsx';
+import SignIn from './Components/auth/sign-in/SignIn.jsx';
 import MyAccount from './Components/my-account/MyAccount.jsx';
 import UpdateProfile from './Components/my-account/update-profile/UpdateProfile.jsx';
 import ProtectedRoute from './Components/protected/ProtectedRouted.jsx';
@@ -17,6 +15,7 @@ import OrderComplete from './Components/order/OrderComplete';
 import { ProductProvider } from './Components/context/ProductContext.js';
 import { CheckoutProvider } from './Components/context/CheckoutContext.js';
 import ErrorBoundary from './Components/ErrorBoundary.jsx';
+import Home from './Components/home/Home'; // Add this import
 
 const router = createBrowserRouter([
   {
@@ -25,7 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <App />,
+        element: <Home />,
       },
       {
         path: "sign-up",

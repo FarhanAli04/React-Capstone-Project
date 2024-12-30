@@ -21,20 +21,26 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    navigate("/checkout");
+    if (selectedProduct) {
+      // Add product to cart logic here
+      navigate("/checkout");
+    } else {
+      // Handle error
+      alert("Product not found.");
+    }
   };
 
   return (
     <Box className="min-h-screen bg-gray-50">
       <Box className="container mx-auto px-4 py-8">
         <Box className="grid md:grid-cols-2 gap-8 bg-white p-6 rounded-xl shadow-md">
-          <Box className="space-y-4">
-            <Box className="relative rounded-xl overflow-hidden">
+          <Box className="flex flex-col items-center space-y-4">
+            <Box className="relative rounded-xl overflow-hidden flex justify-center">
               <img
                 src={selectedProduct.image}
                 alt={selectedProduct.title}
                 className="w-full h-auto object-contain border border-gray-300 rounded-xl"
-                style={{ maxWidth: "300px" }} // Adjust the maxWidth to decrease the image size
+                style={{ maxWidth: "300px" }}
               />
             </Box>
             {selectedProduct.thumbnails && (
@@ -89,7 +95,7 @@ const ProductDetail = () => {
             <Box className="flex gap-6 mt-4">
               <Box className="text-center">
                 <img
-                  src="/path-to-warranty-icon.png"
+                  src="https://static.priceoye.pk/icons/warranty-feature.svg"
                   alt="Warranty"
                   className="w-10 h-10 mx-auto"
                 />
@@ -99,7 +105,7 @@ const ProductDetail = () => {
               </Box>
               <Box className="text-center">
                 <img
-                  src="/path-to-return-icon.png"
+                  src="https://static.priceoye.pk/icons/easy-feature.svg"
                   alt="Returns"
                   className="w-10 h-10 mx-auto"
                 />
@@ -109,7 +115,7 @@ const ProductDetail = () => {
               </Box>
               <Box className="text-center">
                 <img
-                  src="/path-to-delivery-icon.png"
+                  src="https://static.priceoye.pk/icons/shipping-feature.svg"
                   alt="Delivery"
                   className="w-10 h-10 mx-auto"
                 />
@@ -126,3 +132,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+
