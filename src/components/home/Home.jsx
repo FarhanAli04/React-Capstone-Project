@@ -16,6 +16,7 @@ import Footer from '../footer/Footer'
 
 
 const Home = () => {
+
   return (
     <>
       <Box className="!bg-slate-100">
@@ -35,7 +36,7 @@ const Home = () => {
       <ReasonToBuy />
       <LatestTrimmers />
       <FeaturesSection />
-<Footer/>
+      <Footer />
     </>
   )
 }

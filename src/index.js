@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import App from './Components/App'; // Ensure the correct path to App component
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './Components/layout/layout.jsx';
 import SignUp from './Components/auth/sign-up/SignUp.jsx';
@@ -15,7 +16,9 @@ import OrderComplete from './Components/order/OrderComplete';
 import { ProductProvider } from './Components/context/ProductContext.js';
 import { CheckoutProvider } from './Components/context/CheckoutContext.js';
 import ErrorBoundary from './Components/ErrorBoundary.jsx';
-import Home from './Components/home/Home'; // Add this import
+import EarbudGallery from './Components/home/earbud-gallery/EarbudGallery.jsx';
+import EarbudDetail from './Components/home/earbud-gallery/EarbudDetail.jsx';
+import Home from './Components/home/Home.jsx'; // Import the Home component
 
 const router = createBrowserRouter([
   {
@@ -24,7 +27,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Home />,
+        element: <Home />, // Use the Home component here
       },
       {
         path: "sign-up",
@@ -57,6 +60,14 @@ const router = createBrowserRouter([
       {
         path: "product/:id", 
         element: <ProductDetail />,
+      },
+      {
+        path: "earbuds",
+        element: <EarbudGallery />,
+      },
+      {
+        path: "earbud/:id",
+        element: <EarbudDetail />,
       },
       {
         path: "checkout",

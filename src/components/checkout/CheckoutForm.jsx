@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react";
 import {
   Box,
   Button,
@@ -9,13 +9,14 @@ import {
   StepLabel,
   Grid,
   Paper,
-} from "@mui/material"
-import CheckCircleIcon from "@mui/icons-material/CheckCircle"
-import { useNavigate } from "react-router-dom"
-import { useCheckoutContext } from "../context/CheckoutContext"
-import PropTypes from 'prop-types'
+} from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { useNavigate } from "react-router-dom";
+import { useCheckoutContext } from "../context/CheckoutContext";
+import { useProductContext } from "../context/ProductContext"; 
+import PropTypes from "prop-types";
 
-const steps = ["Add to Cart", "Contact Info", "Delivery", "Payment"]
+const steps = ["Add to Cart", "Contact Info", "Delivery", "Payment"];
 
 const ProductPropTypes = {
   name: PropTypes.string.isRequired,
@@ -37,10 +38,17 @@ CheckoutForm.defaultProps = {
   },
 };
 
-export default function CheckoutForm({ product }) {
-  const [activeStep, setActiveStep] = useState(0)
-  const { setCheckoutData } = useCheckoutContext()
-  const navigate = useNavigate()
+export default function CheckoutForm() {
+  const [activeStep, setActiveStep] = useState(0);
+  const { setCheckoutData } = useCheckoutContext();
+  const { cart } = useProductContext(); // Get the cart from the product context
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cart.length === 0) {
+      navigate("/cart"); // Redirect to cart if it's empty
+    }
+  }, [cart, navigate]);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -48,21 +56,31 @@ export default function CheckoutForm({ product }) {
     province: "",
     city: "",
     address: "",
-  })
+  });
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if (activeStep < steps.length - 1) {
-      setActiveStep((prev) => prev + 1)
-    } else {
-      setCheckoutData(formData)
-      navigate("/order-complete")
+    e.preventDefault();
+
+    if (!formData.fullName || !formData.email || !formData.address) {
+      alert("Please fill out all required fields.");
+      return;
     }
+
+    if (activeStep < steps.length - 1) {
+      setActiveStep((prev) => prev + 1);
+    } else {
+      setCheckoutData(formData);
+      navigate("/order-complete"); // Navigate to order complete page
+    }
+  };
+
+  if (cart.length === 0) {
+    return <Typography>Cart is empty. Please add items to the cart.</Typography>;
   }
 
   return (
@@ -75,17 +93,17 @@ export default function CheckoutForm({ product }) {
                 {steps.map((label, index) => (
                   <Step key={label}>
                     <StepLabel
-                      StepIconComponent={({ active, completed }) =>
-                        completed || active ? (
-                          <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
-                            <CheckCircleIcon className="text-white text-xl" />
-                          </div>
-                        ) : (
-                          <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500">
-                            {index + 1}
-                          </div>
-                        )
-                      }
+                      StepIconComponent={({ active, completed }) => (
+                        <div
+                          className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                            completed || active
+                              ? "bg-blue-500 text-white"
+                              : "bg-gray-100 text-gray-500"
+                          }`}
+                        >
+                          {completed ? <CheckCircleIcon /> : index + 1}
+                        </div>
+                      )}
                     >
                       <span className="text-sm font-medium">{label}</span>
                     </StepLabel>
@@ -94,69 +112,33 @@ export default function CheckoutForm({ product }) {
               </Stepper>
 
               {/* Product Card */}
-              {product && (
-                <div className="mb-6 border rounded-lg p-4">
+              {cart.length > 0 && cart.map((product) => (
+                <div key={product.id} className="mb-6 border rounded-lg p-4">
                   <div className="flex gap-4">
                     <img
-                      src={product.image}
-                      alt={product.name}
+                      src={product.image || "placeholder.jpg"}
+                      alt={product.name || "Product Image"}
                       className="w-28 h-28 object-cover rounded-lg"
                     />
                     <div className="flex flex-col justify-between">
                       <div>
                         <Typography variant="h6" className="font-medium">
-                          {product.name}
+                          {product.name || "Unnamed Product"}
                         </Typography>
                         <Typography variant="body2" color="textSecondary">
-                          {product.description}
+                          {product.description || "No description available."}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary">
+                          Quantity: {product.quantity}
                         </Typography>
                       </div>
                       <Typography variant="h6" className="text-blue-500">
-                        ₹{product.price.toLocaleString()}
+                        ₹{product.price ? product.price.toLocaleString() : "N/A"}
                       </Typography>
                     </div>
                   </div>
                 </div>
-              )}
-
-              {/* Warranty Card */}
-              <div className="mb-6 border rounded-lg p-4">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
-                    <CheckCircleIcon className="text-green-600 text-sm" />
-                  </div>
-                  <Typography variant="subtitle1" className="font-medium">
-                    2 Year Warranty
-                  </Typography>
-                </div>
-                <Typography variant="body2" color="textSecondary" className="mb-3">
-                  1-Year Brand (free) + 1-Year Extended Warranty
-                </Typography>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  className="text-blue-500 border-blue-500"
-                >
-                  Add Item
-                </Button>
-              </div>
-
-              {/* Insurance Card */}
-              <div className="mb-6 border rounded-lg p-4">
-                <Typography variant="subtitle1" className="font-medium mb-2">
-                  Insurance
-                </Typography>
-                <Typography variant="body2" color="textSecondary" className="mb-3">
-                  Covers Theft, Loss and Upto 50% Screen Damage
-                </Typography>
-                <Button
-                  variant="outlined"
-                  size="small"
-                  className="text-blue-500 border-blue-500"
-                >
-                  Add Item
-                </Button>
-              </div>
+              ))}
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <TextField
@@ -231,39 +213,48 @@ export default function CheckoutForm({ product }) {
           </div>
 
           {/* Order Summary */}
-          {product && (
+          {cart.length > 0 && (
             <div className="lg:col-span-1">
               <Paper className="bg-white rounded-xl shadow-sm p-6">
                 <Typography variant="h6" className="mb-4">
                   Order Summary
                 </Typography>
-                <div className="flex gap-4 mb-4">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-20 h-20 object-cover rounded-lg"
-                  />
-                  <div>
-                    <Typography variant="subtitle1" className="font-medium">
-                      {product.name}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                      {product.description}
-                    </Typography>
+                {cart.map((product) => (
+                  <div key={product.id} className="flex gap-4 mb-4">
+                    <img
+                      src={product.image || "placeholder.jpg"}
+                      alt={product.name || "Product Image"}
+                      className="w-20 h-20 object-cover rounded-lg"
+                    />
+                    <div>
+                      <Typography variant="subtitle1" className="font-medium">
+                        {product.name || "Unnamed Product"}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        {product.description || "No description available."}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary">
+                        Quantity: {product.quantity}
+                      </Typography>
+                    </div>
                   </div>
-                </div>
+                ))}
                 <div className="space-y-2 mb-4">
                   <div className="flex justify-between">
                     <Typography variant="body2" color="textSecondary">
                       Market Price
                     </Typography>
-                    <Typography variant="body2">₹{(product.price * 1.1).toFixed(2)}</Typography>
+                    <Typography variant="body2">
+                      ₹{cart.reduce((total, product) => total + product.price * product.quantity, 0).toLocaleString()}
+                    </Typography>
                   </div>
                   <div className="flex justify-between">
                     <Typography variant="body2" color="textSecondary">
                       Sale Price
                     </Typography>
-                    <Typography variant="body2">₹{product.price.toLocaleString()}</Typography>
+                    <Typography variant="body2">
+                      ₹{cart.reduce((total, product) => total + product.price * product.quantity, 0).toLocaleString()}
+                    </Typography>
                   </div>
                   <div className="flex justify-between">
                     <Typography variant="body2" color="textSecondary">
@@ -279,21 +270,14 @@ export default function CheckoutForm({ product }) {
                     Total Price
                   </Typography>
                   <Typography variant="subtitle1" className="font-medium">
-                    ₹{product.price.toLocaleString()}
+                    ₹{cart.reduce((total, product) => total + product.price * product.quantity, 0).toLocaleString()}
                   </Typography>
                 </div>
-                <Button
-                  variant="text"
-                  fullWidth
-                  className="mt-4 text-blue-500 normal-case"
-                >
-                  Apply Coupon
-                </Button>
               </Paper>
             </div>
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }

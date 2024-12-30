@@ -3,32 +3,39 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import products from "./productsData";
+import productsData from "./productsData";
 import { useProductContext } from "../../context/ProductContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const ProductDetail = () => {
+const EarbudDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useProductContext();
   const [selectedProduct, setSelectedProduct] = React.useState(null);
 
   React.useEffect(() => {
-    const product = products.find((item) => item.id.toString() === id);
+    const product = productsData.find((item) => item.id.toString() === id);
     setSelectedProduct(product);
   }, [id]);
-
-  if (!selectedProduct) {
-    return <Typography>Product not found.</Typography>;
-  }
 
   const handleAddToCart = () => {
     if (selectedProduct) {
       addToCart(selectedProduct);
+      toast.success("Product added to cart!");
       navigate("/checkout");
     } else {
-      alert("Product not found.");
+      toast.error("Product not found.");
     }
   };
+
+  if (!selectedProduct) {
+    return (
+      <Box className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Typography variant="h6">Product not found.</Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box className="min-h-screen bg-gray-50">
@@ -69,7 +76,12 @@ const ProductDetail = () => {
             <Button
               variant="contained"
               onClick={handleAddToCart}
-              className="!bg-orange-500 !hover:bg-orange-600 text-white font-bold"
+              sx={{
+                backgroundColor: "orange",
+                "&:hover": {
+                  backgroundColor: "darkorange",
+                },
+              }}
             >
               Add to Cart
             </Button>
@@ -80,4 +92,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default EarbudDetail;

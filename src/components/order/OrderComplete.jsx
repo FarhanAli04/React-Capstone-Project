@@ -5,16 +5,10 @@ import { useProductContext } from "../context/ProductContext";
 import { useCheckoutContext } from "../context/CheckoutContext";
 
 const OrderComplete = () => {
-  const { selectedProduct } = useProductContext();
+  const { cart } = useProductContext();
   const { checkoutData } = useCheckoutContext();
 
-  React.useEffect(() => {
-    if (!selectedProduct) {
-      // Redirect to product page or show an error message
-    }
-  }, [selectedProduct]);
-
-  if (!selectedProduct) {
+  if (cart.length === 0) {
     return <Typography>No product added to cart.</Typography>;
   }
 
@@ -28,7 +22,7 @@ const OrderComplete = () => {
             </Typography>
             <Box className="bg-blue-600 text-white p-4 rounded-lg inline-block">
               <Typography variant="h6">
-                Order Number 1553473, {selectedProduct.title}
+                Order Number 1553473
               </Typography>
             </Box>
           </Box>
@@ -100,45 +94,50 @@ const OrderComplete = () => {
                 <Typography variant="h6" className="mb-4">
                   Order Summary
                 </Typography>
-                <Box className="space-y-4">
-                  <Box className="flex gap-4">
-                    <img
-                      src={selectedProduct.image}
-                      alt={selectedProduct.title}
-                      className="w-20 h-20 rounded-lg"
-                    />
-                    <Box>
-                      <Typography variant="subtitle1">{selectedProduct.title}</Typography>
-                      <Typography color="textSecondary">Color: {selectedProduct.color}</Typography>
-                      <Typography color="textSecondary">
-                        {selectedProduct.storage} - {selectedProduct.ram} RAM
-                      </Typography>
+                {cart.map((product) => (
+                  <Box key={product.id} className="space-y-4">
+                    <Box className="flex gap-4">
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-20 h-20 rounded-lg"
+                      />
+                      <Box>
+                        <Typography variant="subtitle1">{product.title}</Typography>
+                        <Typography color="textSecondary">Color: {product.color}</Typography>
+                        <Typography color="textSecondary">
+                          {product.storage} - {product.ram} RAM
+                        </Typography>
+                        <Typography color="textSecondary">
+                          Quantity: {product.quantity}
+                        </Typography>
+                      </Box>
                     </Box>
-                  </Box>
 
-                  <Box className="space-y-2 border-t pt-4">
-                    <Box className="flex justify-between">
-                      <Typography>Market Price</Typography>
-                      <Typography className="line-through">Rs {selectedProduct.originalPrice}</Typography>
-                    </Box>
-                    <Box className="flex justify-between">
-                      <Typography>Sale Price</Typography>
-                      <Typography>Rs {selectedProduct.currentPrice}</Typography>
-                    </Box>
-                    <Box className="flex justify-between text-green-600">
-                      <Typography>Delivery Charges</Typography>
-                      <Typography>Rs 0</Typography>
-                    </Box>
-                    <Box className="flex justify-between text-green-600">
-                      <Typography>You're saving</Typography>
-                      <Typography>Rs {selectedProduct.originalPrice - selectedProduct.currentPrice} on this order</Typography>
-                    </Box>
-                    <Box className="flex justify-between font-medium pt-2 border-t">
-                      <Typography>Total Price</Typography>
-                      <Typography>Rs {selectedProduct.currentPrice}</Typography>
+                    <Box className="space-y-2 border-t pt-4">
+                      <Box className="flex justify-between">
+                        <Typography>Market Price</Typography>
+                        <Typography className="line-through">Rs {product.originalPrice}</Typography>
+                      </Box>
+                      <Box className="flex justify-between">
+                        <Typography>Sale Price</Typography>
+                        <Typography>Rs {product.currentPrice}</Typography>
+                      </Box>
+                      <Box className="flex justify-between text-green-600">
+                        <Typography>Delivery Charges</Typography>
+                        <Typography>Rs 0</Typography>
+                      </Box>
+                      <Box className="flex justify-between text-green-600">
+                        <Typography>You're saving</Typography>
+                        <Typography>Rs {product.originalPrice - product.currentPrice} on this order</Typography>
+                      </Box>
+                      <Box className="flex justify-between font-medium pt-2 border-t">
+                        <Typography>Total Price</Typography>
+                        <Typography>Rs {product.currentPrice * product.quantity}</Typography>
+                      </Box>
                     </Box>
                   </Box>
-                </Box>
+                ))}
               </Box>
             </Grid>
           </Grid>
@@ -159,4 +158,3 @@ const OrderComplete = () => {
 };
 
 export default OrderComplete;
-

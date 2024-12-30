@@ -1,6 +1,6 @@
 import React from 'react';
-import CheckoutForm from '../checkout/CheckoutForm';
-import { ProductProvider } from '../../context/ProductContext';
+import CheckoutForm from '../Components/checkout/CheckoutForm';
+import { ProductProvider } from '../Components/context/ProductContext';
 
 const ParentComponent = () => {
   return (
