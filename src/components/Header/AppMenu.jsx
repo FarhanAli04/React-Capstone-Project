@@ -1,34 +1,11 @@
 import React, { useState } from "react";
 import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Collapse,
-  IconButton,
-  Button,
-  Typography,
-  Divider,
+  Drawer, List, ListItem, ListItemText, ListItemIcon, Collapse, IconButton, Button, Typography, Divider,
 } from "@mui/material";
 import {
-  ExpandLess,
-  ExpandMore,
-  Close,
-  AccountCircle,
-  LocalShipping,
-  ErrorOutline,
-  Notifications,
-  Logout,
-  Smartphone,
-  Watch,
-  Headset,
-  Air,
-  Brush,
-  Power,
-  Speaker,
+  ExpandLess, ExpandMore, Close, AccountCircle, LocalShipping, ErrorOutline, Notifications, Logout, Smartphone,
+  Watch, Headset, Air, Brush, Power, Speaker,
 } from "@mui/icons-material";
-
 import logo from '../../assets/logo.svg'
 
 const categories = [
@@ -108,40 +85,38 @@ const Sidebar = ({ open, onClose }) => {
 
   return (
     <Drawer
-    anchor="left"
-    open={open}
-    onClose={onClose}
-    PaperProps={{
-      sx: { width: 350, backgroundColor: "#f7f7f7", padding: "16px 0" },
-    }}
-    BackdropProps={{
-      onClick: onClose,
-    }}
+      anchor="left"
+      open={open}
+      onClose={onClose}
+      PaperProps={{
+        sx: { width: 350, backgroundColor: "#f7f7f7", padding: "16px 0" },
+      }}
+      BackdropProps={{
+        onClick: onClose,
+      }}
     >
-      {/* Header Section with Logo */}
       <div
-    style={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      padding: "16px",
-      backgroundColor: "#4dacf5",
-    }}
-  >
-    <img
-      src={logo}
-      alt="Logo"
-      style={{ height: "40px", marginLeft: "16px" }}
-    />
-    <IconButton
-      onClick={onClose}
-      style={{ color: "black", borderRadius: "50%" }}
-    >
-      <Close />
-    </IconButton>
-  </div>
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "16px",
+          backgroundColor: "#4dacf5",
+        }}
+      >
+        <img
+          src={logo}
+          alt="Logo"
+          style={{ height: "40px", marginLeft: "16px" }}
+        />
+        <IconButton
+          onClick={onClose}
+          style={{ color: "black", borderRadius: "50%" }}
+        >
+          <Close />
+        </IconButton>
+      </div>
 
-      {/* User Account Links with Unified Background */}
       <List
         style={{
           backgroundColor: "#4dacf5",
@@ -149,7 +124,8 @@ const Sidebar = ({ open, onClose }) => {
           padding: "0 16px",
         }}
       >
-        <ListItem>
+
+        <ListItem button component="a" href="/my-account">
           <ListItemIcon style={{ color: "#fff" }}>
             <AccountCircle />
           </ListItemIcon>

@@ -1,6 +1,6 @@
 // filepath: /E:/React Capstone/my-capstone/src/Components/home/productSection2/ProductSection.jsx
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Grid, Navigation } from "swiper/modules";
@@ -24,6 +24,7 @@ const ProductSection = () => {
 
   return (
     <Box className="bg-gray-200">
+
       <Box
         sx={{
           backgroundImage: "url('https://static.priceoye.pk/images/categories/section-smart-watches-bg.png')",
@@ -34,6 +35,18 @@ const ProductSection = () => {
         }}
         className="w-[100%] h-[300px] lg:h-[450px] mb-52"
       >
+        <Box className="container mx-auto pt-7 mb:pt-16 pb-7 flex justify-between items-center px-3">
+          <Typography className="text-white">
+            Latest Smart Watches
+          </Typography>
+          <Button
+            className="!text-black !bg-white !hover:text-slate-300 !capitalize"
+            variant="contained"
+          >
+            View all
+          </Button>
+        </Box>
+
         <Swiper
           breakpoints={{
             320: { slidesPerView: 2 },

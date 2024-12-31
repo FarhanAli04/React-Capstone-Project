@@ -1,7 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Compain from '../static-banner-bnpl-mb-v4.jpg'
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
@@ -9,7 +8,6 @@ import { Grid } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Navigation}  from 'swiper/modules';
-
 
 const LatestMobiles = () => {
   const product = [
@@ -131,7 +129,7 @@ const LatestMobiles = () => {
     
      <Box className="bg-gray-200">
      <Box className="py-5 lg:py-7 md:px-12 bg-slate-100">
-  <img src={Compain} alt="" className="w-full"/>
+  <img src="https://static.priceoye.pk/images/bnpl_banner/static-banner-bnpl-v4.jpg" alt="" className="w-full"/>
 </Box>
 
      <Box

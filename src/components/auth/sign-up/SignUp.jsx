@@ -28,24 +28,13 @@ const SignUp = () => {
   });
 
   const signInHandler = (data) => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-
-    if (storedUser && storedUser.email === data.email && storedUser.password === data.password) {
-      setIsLoggedIn(true); 
-      navigate("/"); 
-      alert("Successfully logged in!");
-    } else {
-      alert("Invalid email or password");
-    }
-
+    // Your sign-in handler logic here
   };
 
-  
   return (
     <>
-     
       <Box className="bg-slate-100 h-screen">
-      <ToastContainer />
+        <ToastContainer />
         <Box className="flex flex-col w-full justify-center items-center pt-14">
           <Box className="w-96">
             <img
@@ -56,12 +45,10 @@ const SignUp = () => {
           <Box>
             <Box className="w-96 bg-white p-5">
               <Typography variant="h5" className="text-center text-base">
-                Sign In
+                Sign Up
               </Typography>
               <Box className="text-center mt-2 mb-5 text-sm">
-                <Typography>
-                Enter your details to sign in to your account.
-                </Typography>
+                <Typography>Enter your details to create an account.</Typography>
               </Box>
 
               <form onSubmit={handleSubmit(signInHandler)}>

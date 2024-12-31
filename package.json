@@ -18,15 +18,16 @@
     "@mui/material": "^5.16.13",
     "@mui/system": "^5.8.0",
     "@reduxjs/toolkit": "^2.5.0",
+    "ajv": "^8.17.1",
+    "ajv-keywords": "^5.1.0",
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.1",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^7.0.2",
-    "react-scripts": "5.0.1",
-    "react-toastify": "^11.0.1",
+    "react-router-dom": "^7.1.1",
+    "react-toastify": "^11.0.2",
     "swiper": "^11.1.15",
     "yup": "^1.6.1"
   },
@@ -57,6 +58,8 @@
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17"
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.4.17",
+    "webpack": "^5.97.1"
   }
 }

@@ -8,11 +8,9 @@ import { Icon } from "@iconify/react";
 const Footer = () => {
   return (
     <>
-      {/* Main Footer Section */}
       <Box style={{ backgroundColor: "#4dacf5" }} className="mt-5">
         <Box className="container mx-auto">
           <Box className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 text-white cursor-pointer py-12 ms-5">
-            {/* About Us Section */}
             <Box>
               <img className="w-1/3 my-3" src={logo} alt="Logo" />
               <ul>
@@ -24,7 +22,6 @@ const Footer = () => {
                 <li>Terms & Condition</li>
               </ul>
             </Box>
-            {/* Customer Service Section */}
             <Box>
               <Typography variant="h6" className="my-5 text-white">
                 Customer Service
@@ -37,7 +34,6 @@ const Footer = () => {
                 <li>Sell On Priceoye</li>
               </ul>
             </Box>
-            {/* Secure Payments Section */}
             <Box className="w-2/3">
               <Typography variant="h6" className="my-5 text-white">
                 Secure Payments Methods
@@ -53,17 +49,15 @@ const Footer = () => {
         </Box>
       </Box>
 
-      {/* Footer Bottom Section */}
       <Box style={{ backgroundColor: "#4dacf5" }}>
         <Box className="container mx-auto py-3">
           <Box className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 text-white cursor-pointer">
-            {/* Copyright Section */}
-            <Box>
-              <Typography variant="body2" className="text-white text-sm">
+         
+            <Box className="mx-4">
+              <Typography variant="body2" className="text-white text-sm m-4">
                 Copyright © 2024 Priceoye.pk
               </Typography>
             </Box>
-            {/* Social Media Icons */}
             <Box className="flex justify-center space-x-4">
               <Icon
                 icon="entypo-social:youtube-with-circle"

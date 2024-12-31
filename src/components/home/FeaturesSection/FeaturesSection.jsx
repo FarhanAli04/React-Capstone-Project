@@ -9,6 +9,7 @@ const FeaturesSection = () => {
     },
     {
       icon: "https://static.priceoye.pk/icons/warranty-feature.svg", 
+      title: "1 Year",
       description: "Brand Warranty",
     },
     {
