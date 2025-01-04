@@ -3,7 +3,7 @@ import React from "react";
 
 const ShopByPrice = () => {
   return (
-    <div sx={{ marginTop: "200px" }} className="px-4 py-6 bg-gray-50 md:px-6 md:py-8">
+    <div sx={{ marginTop: "400px" }} className="px-4 py-6 bg-gray-50 md:px-6 md:py-8">
       {/* Shop by Price Text */}
       <div className="flex justify-start mb-4">
         <h2 className="text-lg font-semibold text-gray-700 sm:text-xl">Shop by Price</h2>

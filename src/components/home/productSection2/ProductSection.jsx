@@ -1,4 +1,3 @@
-// filepath: /E:/React Capstone/my-capstone/src/Components/home/productSection2/ProductSection.jsx
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -24,10 +23,10 @@ const ProductSection = () => {
 
   return (
     <Box className="bg-gray-200">
-
       <Box
         sx={{
-          backgroundImage: "url('https://static.priceoye.pk/images/categories/section-smart-watches-bg.png')",
+          backgroundImage:
+            "url('https://static.priceoye.pk/images/categories/section-smart-watches-bg.png')",
           backgroundSize: "cover",
           marginTop: "100px",
           backgroundPosition: "center",
@@ -36,9 +35,7 @@ const ProductSection = () => {
         className="w-[100%] h-[300px] lg:h-[450px] mb-52"
       >
         <Box className="container mx-auto pt-7 mb:pt-16 pb-7 flex justify-between items-center px-3">
-          <Typography className="text-white">
-            Latest Smart Watches
-          </Typography>
+          <Typography className="text-white">Latest Smart Watches</Typography>
           <Button
             className="!text-black !bg-white !hover:text-slate-300 !capitalize"
             variant="contained"
@@ -46,15 +43,14 @@ const ProductSection = () => {
             View all
           </Button>
         </Box>
-
+  
         <Swiper
           breakpoints={{
-            320: { slidesPerView: 2 },
-            480: { slidesPerView: 2 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 4 },
+            320: { slidesPerView: 1 }, // 1 item per row for small screens
+            480: { slidesPerView: 1 }, // 1 item per row for slightly larger screens
+            768: { slidesPerView: 3 }, // 3 items per row for tablets
+            1024: { slidesPerView: 4 }, // 4 items per row for desktops
           }}
-          grid={{ rows: 2 }}
           spaceBetween={15}
           modules={[Grid, Navigation]}
           className="customSwiper container mx-auto"
@@ -72,7 +68,9 @@ const ProductSection = () => {
                   <FontAwesomeIcon className="text-[#FFC61C]" icon={faStar} />
                   <Typography>{item.rating}</Typography>
                 </Box>
-                <Typography variant="h6" className="mt-2">Rs {item.currentPrice}</Typography>
+                <Typography variant="h6" className="mt-2">
+                  Rs {item.currentPrice}
+                </Typography>
                 <Typography className="text-gray-500 line-through">
                   Rs {item.originalPrice}
                 </Typography>
@@ -83,6 +81,7 @@ const ProductSection = () => {
       </Box>
     </Box>
   );
+  
 };
 
 export default ProductSection;

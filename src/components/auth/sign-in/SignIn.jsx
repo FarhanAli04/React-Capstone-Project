@@ -1,25 +1,19 @@
-import { Box } from "@mui/material";
-import React, { useState } from "react";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useForm, Controller } from "react-hook-form";
-import {
-  Button,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { Box, Button, IconButton, InputAdornment, OutlinedInput, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
-const SignIn = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+const SignIn= () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const schema = yup.object({
     email: yup.string().required("Email address is required."),
@@ -37,17 +31,25 @@ const SignIn = () => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
     if (storedUser && storedUser.email === data.email && storedUser.password === data.password) {
-      toast.success("Successfully logged in!");
-      navigate("/account");
+      setIsLoggedIn(true); 
+      navigate("/");
+      setTimeout(() => {
+        window.location.reload()
+        
+      }, 500); 
+      alert("Successfully logged in!");
     } else {
-      toast.error("Invalid email or password");
+      alert("Invalid email or password");
     }
+
   };
 
+  
   return (
     <>
+     
       <Box className="bg-slate-100 h-screen">
-        <ToastContainer />
+      <ToastContainer />
         <Box className="flex flex-col w-full justify-center items-center pt-14">
           <Box className="w-96">
             <img
@@ -61,7 +63,9 @@ const SignIn = () => {
                 Sign In
               </Typography>
               <Box className="text-center mt-2 mb-5 text-sm">
-                <Typography>Enter your details to sign in to your account.</Typography>
+                <Typography>
+                Enter your details to sign in to your account.
+                </Typography>
               </Box>
 
               <form onSubmit={handleSubmit(signInHandler)}>
@@ -133,7 +137,7 @@ const SignIn = () => {
                       fullWidth
                       sx={{ backgroundColor: "#48afff", textTransform: "none" }}
                     >
-                      Sign In
+                      Sign in
                     </Button>
                   </Box>
                 </Box>

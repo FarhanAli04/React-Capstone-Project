@@ -6,6 +6,8 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import "./product.css";
+
 
 const Product = () => {
   const product = [
@@ -139,10 +141,10 @@ const Product = () => {
       reviews: 537,
     },
   ];
-  
+
 
   return (
-    <Box className="!w-full !py-16">
+    <Box className="!w-full !py-16  hide-on-mobile ">
       <Box className="text-center mb-10">
         <Typography className="!text-xl !font-semibold text-[#3a3b3a]">
           Loved and Recommended
@@ -155,10 +157,9 @@ const Product = () => {
       <Swiper
         slidesPerView={4}
         spaceBetween={24}
-        className="mySwiper !max-w-[1200px] mx-auto !px-16"
+        className="mySwiper !max-w-[1200px] mx-auto !px-16 "
         centeredSlides={false}
         breakpoints={{
-          // Adjust number of slides based on screen width
           320: { slidesPerView: 1, spaceBetween: 10 },
           480: { slidesPerView: 2, spaceBetween: 15 },
           768: { slidesPerView: 3, spaceBetween: 20 },

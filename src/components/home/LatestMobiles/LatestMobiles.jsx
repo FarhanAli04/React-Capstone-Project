@@ -127,104 +127,116 @@ const LatestMobiles = () => {
   return (
     <>
     
-     <Box className="bg-gray-200">
-     <Box className="py-5 lg:py-7 md:px-12 bg-slate-100">
-  <img src="https://static.priceoye.pk/images/bnpl_banner/static-banner-bnpl-v4.jpg" alt="" className="w-full"/>
-</Box>
-
-     <Box
-        sx={{
-          backgroundImage: `url('https://static.priceoye.pk/images/categories/section-smart-watches-bg.png')`,
-          backgroundSize: "cover",
-          marginTop: "100px",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-        className="w-[100%] h-[300px] lg:h-[450px] mb-52"
-      >
-        <Box className="container mx-auto pt-7 mb:pt-16 pb-7 flex justify-between items-center px-3">
-          <Typography className="text-white"variant="h5">
-          Latest Mobiles
-          </Typography>
-          <Button
-            className="!text-black !bg-white !hover:text-slate-300 !capitalize"
-            variant="contained"
-          >
-            View all
-          </Button>
+    <Box className="bg-gray-200">
+        <Box className="py-5 lg:py-7 md:px-12 bg-slate-100">
+          <img
+            src="https://static.priceoye.pk/images/bnpl_banner/static-banner-bnpl-v4.jpg"
+            alt=""
+            className="w-full"
+          />
         </Box>
-        <Swiper
-          breakpoints={{
-            320: {
-              slidesPerView: 2,
-            },
-            480: {
-              slidesPerView: 2,
-            },
-            768: {
-              slidesPerView: 3,
-            },
-            1024: {
-              slidesPerView: 4,
-            },
+
+        <Box
+          sx={{
+            backgroundImage: `url('https://static.priceoye.pk/images/categories/section-smart-watches-bg.png')`,
+            backgroundSize: "cover",
+            marginTop: "100px",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
-          grid={{
-            rows: 2,
-          }}
-          spaceBetween={15}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Grid, Navigation]}
-          className="customSwiper container mx-auto"
+          className="w-[100%] h-[300px] lg:h-[450px] mb-52"
         >
-          {product.map((item) => (
-            <SwiperSlide
-              key={item.id}
-              className="bg-white rounded-lg mx-3 !w-72 !px-5 cursor-pointer drop-shadow-md"
+          <Box className="container mx-auto pt-7 mb:pt-16 pb-7 flex justify-between items-center px-3">
+            <Typography className="text-white" variant="h5">
+              Latest Mobiles
+            </Typography>
+            <Button
+              className="!text-black !bg-white !hover:text-slate-300 !capitalize"
+              variant="contained"
             >
-              <Box className="flex flex-col justify-center items-center !mt-5">
-                <Box className="text-center">
-                  <img className="w-28" src={item.image} alt={item.title} />
-                  <Box className="flex items-center bg-[#FBF7EB] px-2 rounded-full relative -left-16 -top-2">
-                    <Typography className="!text-sm">
-                      {" "}
-                      <FontAwesomeIcon
-                        className="text-[#FFC61C]"
-                        icon={faStar}
-                      />{" "}
-                      {item.rating}
+              View all
+            </Button>
+          </Box>
+          <Swiper
+            breakpoints={{
+              320: {
+                slidesPerView: 1, // Single slide per view on mobile
+                grid: {
+                  rows: 1, // Single row on mobile
+                },
+              },
+              480: {
+                slidesPerView: 2,
+                grid: {
+                  rows: 1,
+                },
+              },
+              768: {
+                slidesPerView: 3,
+                grid: {
+                  rows: 2,
+                },
+              },
+              1024: {
+                slidesPerView: 4,
+                grid: {
+                  rows: 2,
+                },
+              },
+            }}
+            spaceBetween={15}
+            pagination={{
+              clickable: true,
+            }}
+            navigation
+            modules={[Grid, Navigation]}
+            className="customSwiper container mx-auto"
+          >
+            {product.map((item) => (
+              <SwiperSlide
+                key={item.id}
+                className="bg-white rounded-lg mx-3 !w-72 !px-5 cursor-pointer drop-shadow-md"
+              >
+                <Box className="flex flex-col justify-center items-center !mt-5">
+                  <Box className="text-center">
+                    <img className="w-28" src={item.image} alt={item.title} />
+                    <Box className="flex items-center bg-[#FBF7EB] px-2 rounded-full relative -left-16 -top-2">
+                      <Typography className="!text-sm">
+                        <FontAwesomeIcon
+                          className="text-[#FFC61C]"
+                          icon={faStar}
+                        />{" "}
+                        {item.rating}
+                      </Typography>
+                      <Typography className="!text-[11px] ps-2">
+                        {item.reviews} Reviews
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box className="flex flex-col items-start gap-3 mt-4 w-60 text-start pb-4">
+                    <Typography className="!text-[15px]">{item.title}</Typography>
+                    <Typography className="!font-semibold !text-xl lining-nums">
+                      <span className="text-sm font-medium relative -top-2">
+                        Rs
+                      </span>{" "}
+                      {item.currentPrice}
                     </Typography>
-                    <Typography className="!text-[11px] ps-2">
-                      {" "}
-                      {item.reviews} Reviews
-                    </Typography>
+                    <Box className="flex justify-between items-center w-full pb-2">
+                      <Typography className="!text-sm lining-nums line-through decoration-red-500 text-slate-400">
+                        <span className="text-xs relative -top-2">Rs</span>{" "}
+                        {item.originalPrice}
+                      </Typography>
+                      <Typography className="!font-normal !text-xs text-[#1EB688] bg-[#F0FAF7] rounded-full px-1">
+                        {item.discountPercentage}% OFF
+                      </Typography>
+                    </Box>
                   </Box>
                 </Box>
-                <Box className="flex flex-col items-start gap-3 mt-4 w-60 text-start pb-4 ">
-                  <Typography className="!text-[15px]">{item.title}</Typography>
-                  <Typography className="!font-semibold !text-xl lining-nums">
-                    <span className="text-sm font-medium relative -top-2">
-                      Rs
-                    </span>{" "}
-                    {item.currentPrice}
-                  </Typography>
-                  <Box className="flex justify-between items-center w-full pb-2">
-                    <Typography className="!text-sm lining-nums line-through decoration-red-500 text-slate-400">
-                      <span className="text-xs relative -top-2">Rs</span>{" "}
-                      {item.originalPrice}
-                    </Typography>
-                    <Typography className="!font-normal !text-xs text-[#1EB688] bg-[#F0FAF7] rounded-full px-1">
-                      {item.discountPercentage}% OFF
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
       </Box>
-     </Box>
     </>
   );
 };

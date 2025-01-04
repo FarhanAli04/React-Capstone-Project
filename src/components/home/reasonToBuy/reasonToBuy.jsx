@@ -13,7 +13,7 @@ const ReasonToBuy = () => {
       </div>
       <Box className="container mx-auto px-4 my-8">
         <Box className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {/* First Card */}
+
           <Box className="flex items-center justify-around bg-blue-600 p-5 rounded-lg shadow-md w-[90%] mx-auto" sx={{ minHeight: 200 }}>
             <Box>
               <img src={firstImg} alt="" />
@@ -34,7 +34,6 @@ const ReasonToBuy = () => {
             </Box>
           </Box>
 
-          {/* Second Card */}
           <Box className="flex items-center justify-around bg-blue-600 p-5 rounded-lg shadow-md w-[90%] mx-auto" sx={{ minHeight: 200 }}>
             <Box>
               <img src={SecImg} alt="" />
@@ -55,7 +54,6 @@ const ReasonToBuy = () => {
             </Box>
           </Box>
 
-          {/* Third Card */}
           <Box className="flex items-center justify-around bg-blue-600 p-5 rounded-lg shadow-md w-[90%] mx-auto" sx={{ minHeight: 200 }}>
             <Box>
               <img src={ThirdImg} alt="" />
@@ -76,7 +74,6 @@ const ReasonToBuy = () => {
             </Box>
           </Box>
 
-          {/* Fourth Card */}
           <Box className="flex items-center justify-around bg-blue-600 p-5 rounded-lg shadow-md w-[90%] mx-auto" sx={{ minHeight: 200 }}>
             <Box>
               <img src={fourthImg} alt="" />

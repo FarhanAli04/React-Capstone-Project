@@ -10,7 +10,7 @@ import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import productsData from "./productsData"; // Ensure this import is correct
+import productsData from "./productsData";
 
 const EarbudGallery = () => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const EarbudGallery = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
-        className="w-[100%] h-[300px] lg:h-[450px] mb-52"
+        className="w-[100%] h-[300px] lg:h-[450px] mb-52 "
       >
         <Box className="container mx-auto pt-7 mb:pt-16 pb-7 flex justify-between items-center px-3">
           <Typography className="text-white">
@@ -45,19 +45,20 @@ const EarbudGallery = () => {
           breakpoints={{
             320: {
               slidesPerView: 2,
+              grid: { rows: 1 }, // Set to one row for small screens
             },
             480: {
               slidesPerView: 2,
+              grid: { rows: 1 }, // Set to one row for medium-small screens
             },
             768: {
               slidesPerView: 3,
+              grid: { rows: 2 }, // Two rows for medium screens
             },
             1024: {
               slidesPerView: 4,
+              grid: { rows: 2 }, // Two rows for large screens
             },
-          }}
-          grid={{
-            rows: 2,
           }}
           spaceBetween={15}
           pagination={{
