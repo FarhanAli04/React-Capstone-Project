@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/React-Capstone-Project/static/css/main.7c287497.css",
+    "main.js": "/React-Capstone-Project/static/js/main.2b1427e4.js",
+    "static/media/hero-2.jpg": "/React-Capstone-Project/static/media/hero-2.3f33cc71f74b46da645c.jpg",
+    "static/media/hero-7.jpg": "/React-Capstone-Project/static/media/hero-7.55fa7bee688b5a220ec7.jpg",
+    "static/media/feature-shipping.svg": "/React-Capstone-Project/static/media/feature-shipping.8d68c92c617e41ec9fa08eb24744bd1e.svg",
+    "static/media/hero-8.jpg": "/React-Capstone-Project/static/media/hero-8.9ca6c86aee04a90a3d9a.jpg",
+    "static/media/hero-1.jpg": "/React-Capstone-Project/static/media/hero-1.45e21aee7b6387f74bd8.jpg",
+    "static/media/hero-4.jpg": "/React-Capstone-Project/static/media/hero-4.82f742c69f61bc4ceff5.jpg",
+    "static/media/sale-campaign-banner.gif": "/React-Capstone-Project/static/media/sale-campaign-banner.03f333eb0a4cf396d395.gif",
+    "static/media/hero-3.jpg": "/React-Capstone-Project/static/media/hero-3.098637ed9fae03e41379.jpg",
+    "static/media/hero-5.jpg": "/React-Capstone-Project/static/media/hero-5.86550a7bac154486686e.jpg",
+    "static/media/hero-6.jpg": "/React-Capstone-Project/static/media/hero-6.2acd3eecc49fb57a0a4b.jpg",
+    "static/media/order-packaging.svg": "/React-Capstone-Project/static/media/order-packaging.e46850efab6a88587532b69b0ac029eb.svg",
+    "static/media/easy_instalment.svg": "/React-Capstone-Project/static/media/easy_instalment.6028005620e47fa1a90d4b8829bd4b9c.svg",
+    "static/media/extended-warranty.svg": "/React-Capstone-Project/static/media/extended-warranty.ef27ddcf8483803f37d3957a79e9a39d.svg",
+    "static/media/payment_method.svg": "/React-Capstone-Project/static/media/payment_method.9a61be0ec8400e716d6b50a4cb1523de.svg",
+    "static/media/logo.svg": "/React-Capstone-Project/static/media/logo.c59b3ef69c521fdfa0b4f8ab92a0f193.svg",
+    "index.html": "/React-Capstone-Project/index.html",
+    "main.7c287497.css.map": "/React-Capstone-Project/static/css/main.7c287497.css.map",
+    "main.2b1427e4.js.map": "/React-Capstone-Project/static/js/main.2b1427e4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7c287497.css",
+    "static/js/main.2b1427e4.js"
+  ]
+}
