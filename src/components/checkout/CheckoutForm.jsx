@@ -41,12 +41,12 @@ CheckoutForm.defaultProps = {
 export default function CheckoutForm() {
   const [activeStep, setActiveStep] = useState(0);
   const { setCheckoutData } = useCheckoutContext();
-  const { cart } = useProductContext(); // Get the cart from the product context
+  const { cart } = useProductContext(); 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (cart.length === 0) {
-      navigate("/cart"); // Redirect to cart if it's empty
+      navigate("/cart"); 
     }
   }, [cart, navigate]);
 
@@ -75,7 +75,7 @@ export default function CheckoutForm() {
       setActiveStep((prev) => prev + 1);
     } else {
       setCheckoutData(formData);
-      navigate("/order-complete"); // Navigate to order complete page
+      navigate("/order-complete"); 
     }
   };
 
